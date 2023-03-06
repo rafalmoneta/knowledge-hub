@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply text-base;
+  @apply antialiased;
+}
+
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+
+  --primary-light: #f3f4f6;
+  --primary-dark: #0d0f12;
+
+  --light-gray: #fafbfc;
+}
+
+.light {
+  --primary: var(--primary-light);
+  --bg-primary: var(--color-white);
+  --bg-primary-inverse: var(var(--primary-dark));
+  --bg-secondary: var(--light-gray);
+  --bg-secondary-inverse: var(--color-gray-800);
+  --border-primary: #ebeef2;
+  --border-secondary: #d0d3d7;
+  --text-primary: #1a1b21;
+}
+
+.dark {
+  --primary: var(--primary-dark);
+  --bg-primary: var(--primary-dark);
+  --bg-primary-inverse: var(--color-white);
+  --bg-secondary: var(--color-gray-850);
+  --bg-secondary-inverse: var(--light-gray);
+  --border-primary: #30313a;
+  --border-secondary: #444854;
+  --text-primary: #fafbfc;
+}
+
+@layer utilities {
+  .focus-ring {
+    @apply focus:ring-2;
+    @apply focus:outline-none;
+    @apply focus:ring-offset-0;
+    @apply focus:ring-blue-200;
+    @apply dark:focus:ring-blue-800;
+    @apply focus:border-blue-500;
+    @apply focus:shadow-none;
+  }
+
+  .focus-visible-ring {
+    @apply focus-visible:ring-2;
+    @apply focus-visible:outline-none;
+    @apply focus-visible:ring-offset-0;
+    @apply focus-visible:ring-blue-200;
+    @apply dark:focus-visible:ring-blue-800;
+    @apply focus-visible:border-blue-500;
+    @apply focus-visible:shadow-none;
+  }
+}
