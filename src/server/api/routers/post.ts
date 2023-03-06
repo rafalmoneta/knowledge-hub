@@ -79,7 +79,7 @@ export const postRouter = createTRPCRouter({
 
       return post;
     }),
-  get: publicProcedure
+  get: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(async ({ input, ctx }) => {
       const { id } = input;
@@ -130,16 +130,6 @@ export const postRouter = createTRPCRouter({
           },
         },
       });
-
-      // const userIsAuthor = post?.author.id === ctx.session?.user?.id;
-      // const userIsAdmin = ctx.session?.user?.role === "ADMIN";
-
-      // if (!post || (!userIsAuthor && !userIsAdmin)) {
-      //   throw new TRPCError({
-      //     code: "NOT_FOUND",
-      //     message: "Post not found",
-      //   });
-      // }
 
       return post;
     }),

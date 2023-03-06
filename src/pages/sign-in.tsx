@@ -10,7 +10,7 @@ const SignIn = () => {
   return (
     <>
       <Head>
-        <title>🌳 Digital Garden</title>
+        <title>Knoweldge Hub</title>
       </Head>
 
       <div className="min-h-screen w-full bg-primary-inverse dark:bg-primary">

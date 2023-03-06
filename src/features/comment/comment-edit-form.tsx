@@ -4,7 +4,7 @@ import { getPostQueryKey } from "@/hooks/useLikeUnlike";
 import { trpc } from "@/utils/api";
 import { useQueryClient } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
-import { Button } from "../button";
+import { Button } from "../../components/button";
 import { MarkdownEditor } from "../markdown-editor/markdown-editor";
 
 type CommentFormData = {
@@ -17,6 +17,7 @@ const EditCommentForm = ({
   onDone,
 }: {
   postId: string;
+  // TODO: Fix type
   comment: RouterOutputs["post"]["get"]["comments"][number];
   onDone: () => void;
 }) => {

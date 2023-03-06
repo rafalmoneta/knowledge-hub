@@ -1,5 +1,5 @@
 import { markdownToHtml } from "@/lib/editor";
-import { HtmlView } from "../html-view";
+import { HtmlView } from "../../components/html-view";
 
 export default function MarkdownPreview({ markdown }: { markdown: string }) {
   return (

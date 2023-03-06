@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { Layout } from "@/components/layout";
 import Container from "@/components/container";
-import { PostForm } from "@/components/post-form";
+import { PostForm } from "@/features/post/post-form";
 import PostLoading from "@/components/loading/PostLoading";
 import { useSession } from "next-auth/react";
 
@@ -98,7 +98,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      session,
       postId: query.id,
     },
   };

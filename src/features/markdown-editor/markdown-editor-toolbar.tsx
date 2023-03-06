@@ -1,4 +1,9 @@
-import { BoldIcon, ItalicIcon, LinkIcon, ListIcon } from "../icons";
+import {
+  BoldIcon,
+  ItalicIcon,
+  LinkIcon,
+  ListIcon,
+} from "../../components/icons";
 
 const TOOLBAR_ITEMS = [
   {

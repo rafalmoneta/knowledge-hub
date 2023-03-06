@@ -7,24 +7,24 @@ import {
   DialogContent,
   DialogDescription,
   DialogTitle,
-} from "./dialog";
-import { Button } from "./button";
+} from "../../components/dialog";
+import { Button } from "../../components/button";
 import { useRouter } from "next/router";
 
-const ConfirmDeletePostDialog = ({
-  postId,
+const ConfirmDeleteEventDialog = ({
+  eventId,
   isOpen,
   onClose,
 }: {
-  postId: string;
+  eventId: string;
   isOpen: boolean;
   onClose: () => void;
 }) => {
   const router = useRouter();
   const cancelRef = React.useRef<HTMLButtonElement>(null);
-  const deletePostMutation = trpc.post.delete.useMutation({
+  const deleteEventMutation = trpc.event.delete.useMutation({
     async onSuccess() {
-      await router.push(`/`);
+      await router.push(`/events`);
     },
     onError: (error) => {
       console.log(error);
@@ -35,10 +35,10 @@ const ConfirmDeletePostDialog = ({
     <>
       <Dialog isOpen={isOpen} onClose={onClose} initialFocus={cancelRef}>
         <DialogContent>
-          <DialogTitle>Delete Post</DialogTitle>
+          <DialogTitle>Delete Event</DialogTitle>
 
           <DialogDescription className="mt-6">
-            Are you sure you want to delete this post? This action cannot be
+            Are you sure you want to delete this Event? This action cannot be
             undone.
           </DialogDescription>
 
@@ -49,13 +49,13 @@ const ConfirmDeletePostDialog = ({
           <Button
             variant="secondary"
             className="!text-red-500"
-            isLoading={deletePostMutation.isLoading}
-            loadingChildren="Deleting post"
+            isLoading={deleteEventMutation.isLoading}
+            loadingChildren="Deleting Event"
             onClick={() => {
-              deletePostMutation.mutate({ id: postId });
+              deleteEventMutation.mutate({ id: eventId });
             }}
           >
-            Delete Post
+            Delete Event
           </Button>
 
           <Button variant="secondary" onClick={onClose}>
@@ -67,4 +67,4 @@ const ConfirmDeletePostDialog = ({
   );
 };
 
-export default ConfirmDeletePostDialog;
+export default ConfirmDeleteEventDialog;

@@ -3,7 +3,7 @@ import Head from "next/head";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/server/auth";
 import { Layout } from "@/components/layout";
-import { PostForm } from "@/components/post-form";
+import { PostForm } from "@/features/post/post-form";
 import { trpc } from "@/utils/api";
 import { useRouter } from "next/router";
 import Container from "@/components/container";

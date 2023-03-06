@@ -2,7 +2,7 @@ import { XIcon } from "@/components/icons";
 import { classNames } from "@/lib/classnames";
 import { primaryFont, secondaryFont } from "@/lib/fonts";
 import { Dialog as HeadlessDialog, Transition } from "@headlessui/react";
-import * as React from "react";
+import React from "react";
 
 type DialogProps = {
   isOpen: boolean;
@@ -17,8 +17,6 @@ export function Dialog({
   children,
   initialFocus,
 }: DialogProps) {
-  console.log("isOpen", isOpen, initialFocus);
-
   return (
     <Transition.Root show={isOpen} as={React.Fragment}>
       <HeadlessDialog

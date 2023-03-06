@@ -1,7 +1,7 @@
 import React from "react";
 import { Author } from "@/components/author";
 import Container from "@/components/container";
-import EventCard from "@/components/event-card";
+import EventCard from "@/features/event/event-card";
 import { HtmlView } from "@/components/html-view";
 import { IconButton } from "@/components/icon-button";
 import { Layout } from "@/components/layout";
@@ -17,7 +17,7 @@ import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import ConfirmDeleteEventDialog from "@/components/event-delete";
+import ConfirmDeleteEventDialog from "@/features/event/event-delete";
 
 const EventPage: NextPage = () => {
   const { data: session } = useSession();
@@ -60,10 +60,9 @@ const EventPage: NextPage = () => {
   if (eventQuery.isError) return <div>Error: {eventQuery.error.message}</div>;
   if (eventQuery.data === null) return <div>Not found</div>;
 
-  // TODO: change it to the current user id
-  // const isUserAuthor = postQuery.data.author.id === "1";
+  // TODO: change it to
   const isUserAuthor = true;
-  const isUserAdmin = true;
+  const isUserAdmin = session?.user.role === "ADMIN";
 
   return (
     <>

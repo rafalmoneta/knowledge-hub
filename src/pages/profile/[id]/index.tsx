@@ -4,7 +4,6 @@ import { authOptions } from "@/server/auth";
 import React from "react";
 import Container from "@/components/container";
 import { Layout } from "@/components/layout";
-import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { trpc } from "@/utils/api";
@@ -18,6 +17,7 @@ import {
 } from "@/components/menu";
 import { IconButton } from "@/components/icon-button";
 import ProfileLoading from "@/components/loading/ProfileLoading";
+import { useSession } from "next-auth/react";
 
 export const TechnologyTag = ({
   name,
@@ -35,10 +35,8 @@ export const TechnologyTag = ({
 };
 
 const UserPage: NextPage<{ userId: string }> = ({ userId }) => {
-  const { data: session } = useSession();
   const router = useRouter();
-
-  // const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
+  const { data: session } = useSession();
 
   const userQuery = trpc.user.profile.useQuery({ id: userId });
 
@@ -195,9 +193,10 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 
+  // TODO: Investigate why this is not working, why I cannot pass session as a props
+  // but it works for passing the user => user: session.user
   return {
     props: {
-      session,
       userId: query.id,
     },
   };

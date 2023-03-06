@@ -2,10 +2,10 @@ import React from "react";
 import type { RouterOutputs } from "@/utils/api";
 import { classNames } from "@/lib/classnames";
 import Link from "next/link";
-import { AuthorSmall } from "./author";
-import { HtmlView } from "./html-view";
+import { AuthorSmall } from "../../components/author";
+import { HtmlView } from "../../components/html-view";
 import { createPostCardContent } from "@/lib/text";
-import { ChevronRightIcon } from "./icons";
+import { ChevronRightIcon } from "../../components/icons";
 
 type PostCardProps = {
   post: RouterOutputs["post"]["feed"]["posts"][number];

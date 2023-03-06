@@ -1,32 +1,35 @@
 import React from "react";
 import type { RouterOutputs } from "@/utils/api";
-import { Avatar } from "../avatar";
-import EditCommentForm from "./edit-form";
+import { Avatar } from "../../components/avatar";
+import EditCommentForm from "./comment-edit-form";
 import { useSession } from "next-auth/react";
-import { AuthorSmall } from "../author";
-import { HtmlView } from "../html-view";
+import { AuthorSmall } from "../../components/author";
+import { HtmlView } from "../../components/html-view";
 import { Menu } from "@headlessui/react";
 import {
   MenuButton,
   MenuItemButton,
   MenuItems,
   MenuItemsContent,
-} from "../menu";
-import { IconButton } from "../icon-button";
-import ConfirmDeleteCommentDialog from "./delete";
+} from "../../components/menu";
+import { IconButton } from "../../components/icon-button";
+import ConfirmDeleteCommentDialog from "./comment-delete";
 
 const Comment = ({
   postId,
   comment,
 }: {
   postId: string;
-  comment: RouterOutputs["comment"]["get"][string];
+  // TODO: Fix type
+  comment: RouterOutputs["comment"]["get"];
 }) => {
   const { data: session } = useSession();
   const [isEditing, setIsEditing] = React.useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
 
-  const isUserAuthor = session?.user?.id === comment.author.id;
+  const isUserAuthor = session?.user?.id === comment?.author.id;
+
+  if (!comment) return null;
 
   if (isEditing) {
     return (
@@ -47,7 +50,7 @@ const Comment = ({
   return (
     <div>
       <div className="flex items-center justify-between gap-4">
-        <AuthorSmall author={comment.author} date={comment.createdAt} />
+        <AuthorSmall author={comment.author} date={comment?.createdAt} />
         {isUserAuthor ? (
           <div className="relative">
             {isUserAuthor ? (

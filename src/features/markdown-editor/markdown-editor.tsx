@@ -24,7 +24,7 @@ export const MarkdownEditor = ({
   value = "",
   minRows = 15,
   onChange,
-  // onTriggerSubmit,
+  onTriggerSubmit,
   ...restProps
 }: MarkdownEditorProps) => {
   const textareaMarkdownRef = React.useRef<TextareaMarkdownRef>(null);

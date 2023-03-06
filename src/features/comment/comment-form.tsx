@@ -3,7 +3,7 @@ import { trpc } from "@/utils/api";
 import { useQueryClient } from "@tanstack/react-query";
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, useForm } from "react-hook-form";
-import { Button } from "../button";
+import { Button } from "../../components/button";
 import { MarkdownEditor } from "../markdown-editor/markdown-editor";
 
 type CommentFormData = {

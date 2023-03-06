@@ -4,7 +4,7 @@ import { authOptions } from "@/server/auth";
 import Head from "next/head";
 import { Layout } from "@/components/layout";
 import { trpc } from "@/utils/api";
-import { PostCard } from "@/components/post-card";
+import { PostCard } from "@/features/post/post-card";
 import PostCardLoading from "@/components/loading/PostCardLoading";
 
 const Home: NextPage = () => {

@@ -5,8 +5,8 @@ import React from "react";
 import { Author } from "@/components/author";
 import { Avatar } from "@/components/avatar";
 import { ButtonLink } from "@/components/button-link";
-import AddCommentForm from "@/components/comment/add-comment-form";
-import Comment from "@/components/comment/view";
+import AddCommentForm from "@/features/comment/comment-form";
+import Comment from "@/features/comment/comment-view";
 import Container from "@/components/container";
 import { DateDisplay } from "@/components/date-display";
 import { HtmlView } from "@/components/html-view";
@@ -26,7 +26,7 @@ import { trpc } from "@/utils/api";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import ConfirmDeletePostDialog from "@/components/post-delete";
+import ConfirmDeletePostDialog from "@/features/post/post-delete";
 import PostLoading from "@/components/loading/PostLoading";
 
 const PostPage: NextPage<{ postId: string }> = ({ postId }) => {
@@ -178,9 +178,11 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 
+  // TODO: Investigate why this is not working, why I cannot pass session as a props
+  // but it works for passing the user => user: session.user
+
   return {
     props: {
-      session,
       postId: query.id,
     },
   };

@@ -6,7 +6,7 @@ import { Layout } from "@/components/layout";
 import { trpc } from "@/utils/api";
 import { useRouter } from "next/router";
 import Container from "@/components/container";
-import { EventForm } from "@/components/event-form";
+import { EventForm } from "@/features/event/event-form";
 
 const NewPostPage: NextPage = () => {
   const router = useRouter();

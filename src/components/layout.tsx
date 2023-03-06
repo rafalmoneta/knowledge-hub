@@ -27,6 +27,7 @@ export function Layout({ children }: LayoutProps) {
   const { theme, themes, setTheme } = useTheme();
   const [isSearchDialogOpen, setIsSearchDialogOpen] = React.useState(false);
 
+  // TODO: Implement Search Modal
   console.log(isSearchDialogOpen);
 
   return (

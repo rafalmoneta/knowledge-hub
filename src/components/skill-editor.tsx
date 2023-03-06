@@ -46,12 +46,13 @@ export const TechnologySelector = ({
             Open
           </Combobox.Button>
         </div>
+
         <Transition
           as={React.Fragment}
           leave="transition ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          // afterLeave={() => setQuery("")}
+          afterLeave={() => setQuery("")}
         >
           <Combobox.Options className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded border bg-primary py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {filteredTechnologies.map((technology) => (
@@ -77,8 +78,6 @@ export const ExpertiseSelector = ({
   value: number;
   onChange: (value: number) => void;
 }) => {
-  console.log("ExpertiseSelector", value);
-
   return (
     <div className="flex items-center gap-2">
       <Button
@@ -91,6 +90,7 @@ export const ExpertiseSelector = ({
       >
         1
       </Button>
+
       <Button
         variant="secondary"
         className={classNames(
@@ -101,6 +101,7 @@ export const ExpertiseSelector = ({
       >
         2
       </Button>
+
       <Button
         variant="secondary"
         className={classNames(
@@ -111,6 +112,7 @@ export const ExpertiseSelector = ({
       >
         3
       </Button>
+
       <Button
         variant="secondary"
         className={classNames(
@@ -121,6 +123,7 @@ export const ExpertiseSelector = ({
       >
         4
       </Button>
+
       <Button
         variant="secondary"
         className={classNames(

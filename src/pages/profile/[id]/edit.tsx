@@ -45,6 +45,8 @@ const EditProfilePage: NextPage<{ userId: string }> = ({ userId }) => {
   });
 
   const { register, handleSubmit, control, watch } = useForm<FormValues>({
+    // TODO: Investigate if this is the best way to set "defaultValues" if
+    // data is null or undefined - probably need only "values"
     defaultValues: {
       position: userQuery.data?.position ? userQuery.data.position : "",
       skills: userQuery.data?.skills ? userQuery.data.skills : [],

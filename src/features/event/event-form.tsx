@@ -1,11 +1,11 @@
 import type { SubmitHandler } from "react-hook-form";
 import { Controller, useForm } from "react-hook-form";
-import { Button } from "./button";
-import { ButtonLink } from "./button-link";
-import { DateField } from "./date-field";
-import { MarkdownIcon } from "./icons";
-import { MarkdownEditor } from "./markdown-editor/markdown-editor";
-import { TextField } from "./text-field";
+import { Button } from "../../components/button";
+import { ButtonLink } from "../../components/button-link";
+import { DateField } from "../../components/date-field";
+import { MarkdownIcon } from "../../components/icons";
+import { MarkdownEditor } from "../markdown-editor/markdown-editor";
+import { TextField } from "../../components/text-field";
 
 type FormValues = {
   title: string;
@@ -120,7 +120,7 @@ export function EventForm({
         <Controller
           name="summary"
           control={control}
-          // rules={{ required: true }}
+          rules={{ required: true }}
           render={({ field }) => (
             <MarkdownEditor
               label="Summary of the Event"

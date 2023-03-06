@@ -13,6 +13,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <ThemeProvider attribute="class" disableTransitionOnChange>
+      {/* TODO: Create wrapper for managin next/fonts */}
       <div
         className={`${primaryFont.variable} ${secondaryFont.variable} font-sans`}
       >

@@ -1,6 +1,5 @@
 import React from "react";
-import { useQueryClient } from "@tanstack/react-query";
-import { Button } from "../button";
+import { trpc } from "@/utils/api";
 import {
   Dialog,
   DialogActions,
@@ -8,28 +7,24 @@ import {
   DialogContent,
   DialogDescription,
   DialogTitle,
-} from "../dialog";
-import { trpc } from "@/utils/api";
-import { getPostQueryKey } from "@/hooks/useLikeUnlike";
+} from "../../components/dialog";
+import { Button } from "../../components/button";
+import { useRouter } from "next/router";
 
-const ConfirmDeleteCommentDialog = ({
+const ConfirmDeletePostDialog = ({
   postId,
-  commentId,
   isOpen,
   onClose,
 }: {
   postId: string;
-  commentId: string;
   isOpen: boolean;
   onClose: () => void;
 }) => {
-  const client = useQueryClient();
+  const router = useRouter();
   const cancelRef = React.useRef<HTMLButtonElement>(null);
-  const deleteCommentMutation = trpc.comment.delete.useMutation({
-    onSuccess: () => {
-      return client.invalidateQueries({
-        queryKey: getPostQueryKey(postId),
-      });
+  const deletePostMutation = trpc.post.delete.useMutation({
+    async onSuccess() {
+      await router.push(`/`);
     },
     onError: (error) => {
       console.log(error);
@@ -40,10 +35,10 @@ const ConfirmDeleteCommentDialog = ({
     <>
       <Dialog isOpen={isOpen} onClose={onClose} initialFocus={cancelRef}>
         <DialogContent>
-          <DialogTitle>Delete comment</DialogTitle>
+          <DialogTitle>Delete Post</DialogTitle>
 
           <DialogDescription className="mt-6">
-            Are you sure you want to delete this comment? This action cannot be
+            Are you sure you want to delete this post? This action cannot be
             undone.
           </DialogDescription>
 
@@ -54,18 +49,13 @@ const ConfirmDeleteCommentDialog = ({
           <Button
             variant="secondary"
             className="!text-red-500"
-            isLoading={deleteCommentMutation.isLoading}
-            loadingChildren="Deleting comment"
+            isLoading={deletePostMutation.isLoading}
+            loadingChildren="Deleting post"
             onClick={() => {
-              deleteCommentMutation.mutate(
-                { id: commentId },
-                {
-                  onSuccess: () => onClose(),
-                }
-              );
+              deletePostMutation.mutate({ id: postId });
             }}
           >
-            Delete comment
+            Delete Post
           </Button>
 
           <Button variant="secondary" onClick={onClose}>
@@ -77,4 +67,4 @@ const ConfirmDeleteCommentDialog = ({
   );
 };
 
-export default ConfirmDeleteCommentDialog;
+export default ConfirmDeletePostDialog;

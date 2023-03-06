@@ -7,12 +7,6 @@ import { trpc } from "@/utils/api";
 import { Button } from "@/components/button";
 
 const AdminPage: NextPage = () => {
-  const postsFeedQuery = trpc.post.feed.useQuery();
-
-  if (postsFeedQuery.isLoading) return <div>Loading...</div>;
-  if (postsFeedQuery.isError) return <div>Error</div>;
-  if (postsFeedQuery.data === null) return <div>Not found</div>;
-
   return (
     <>
       <Head>

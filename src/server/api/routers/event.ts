@@ -92,6 +92,7 @@ export const eventRouter = createTRPCRouter({
     .mutation(async ({ input, ctx }) => {
       const { id, data } = input;
 
+      // TODO: Add missing validation for updating the event
       // const event = await ctx.prisma.event.findUnique({
       //   where: {
       //     id,

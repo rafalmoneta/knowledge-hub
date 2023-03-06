@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { Layout } from "@/components/layout";
 import Container from "@/components/container";
-import { EventForm } from "@/components/event-form";
+import { EventForm } from "@/features/event/event-form";
 import { useSession } from "next-auth/react";
 
 const EditEventPage: NextPage = () => {
