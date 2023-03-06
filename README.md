@@ -1,4 +1,13 @@
-# Create T3 App
+# Knowledge Hub prototype
+
+Todo:
+
+- [ ] Fix Types
+- [ ] use Next.js [Layouts](https://nextjs.org/docs/basic-features/layouts)
+- [ ] investigate session in SSR and if not working - pass user via props (not session)
+- [ ] plan more feature and move to the three column layout (left-sidebar, content, right-sidebar)
+
+# Created with T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
