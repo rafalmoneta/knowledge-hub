@@ -131,15 +131,15 @@ export const postRouter = createTRPCRouter({
         },
       });
 
-      const userIsAuthor = post?.author.id === ctx.session?.user?.id;
-      const userIsAdmin = ctx.session?.user?.role === "ADMIN";
+      // const userIsAuthor = post?.author.id === ctx.session?.user?.id;
+      // const userIsAdmin = ctx.session?.user?.role === "ADMIN";
 
-      if (!post || (!userIsAuthor && !userIsAdmin)) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Post not found",
-        });
-      }
+      // if (!post || (!userIsAuthor && !userIsAdmin)) {
+      //   throw new TRPCError({
+      //     code: "NOT_FOUND",
+      //     message: "Post not found",
+      //   });
+      // }
 
       return post;
     }),

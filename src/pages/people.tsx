@@ -118,7 +118,7 @@ const PeoplePage: NextPage = () => {
           <div className="mt-8">
             <ul>
               {peopleQuery.data.map((person) => (
-                <li key={person.id}>
+                <li key={person.id} className="mb-4">
                   <PersonCard key={person.id} person={person} />
                 </li>
               ))}
