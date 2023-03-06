@@ -108,4 +108,29 @@ export const commentRouter = createTRPCRouter({
 
       return updatedComment;
     }),
+  get: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input, ctx }) => {
+      const { id } = input;
+
+      const comment = await ctx.prisma.comment.findUnique({
+        where: { id },
+        select: {
+          author: {
+            select: {
+              id: true,
+              name: true,
+              email: true,
+              image: true,
+            },
+          },
+          content: true,
+          contentHtml: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      });
+
+      return comment;
+    }),
 });

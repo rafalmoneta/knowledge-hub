@@ -20,7 +20,7 @@ const Comment = ({
   comment,
 }: {
   postId: string;
-  comment: RouterOutputs["post"]["get"]["comments"][number];
+  comment: RouterOutputs["comment"]["get"][string];
 }) => {
   const { data: session } = useSession();
   const [isEditing, setIsEditing] = React.useState(false);
