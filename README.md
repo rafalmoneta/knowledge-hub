@@ -4,6 +4,7 @@ Todo:
 
 - [ ] Fix Types
 - [ ] use Next.js [Layouts](https://nextjs.org/docs/basic-features/layouts)
+- [ ] implement SSR with React Query, Hydration and prefetching
 - [ ] investigate session in SSR and if not working - pass user via props (not session)
 - [ ] plan more feature and move to the three column layout (left-sidebar, content, right-sidebar)
 
